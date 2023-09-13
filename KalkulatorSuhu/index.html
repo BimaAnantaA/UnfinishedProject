@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Suhu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster&family=Montserrat:wght@500;600;800&family=Mukta:wght@700&family=Poppins:wght@300;400;500;700&display=swap');
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(0, 140, 255);
+        }
+        .main{
+            width: 400px;
+            height: 500px;
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            transform: scale(0.8);
+        }
+        #screen{
+            width: 100%;
+            height: 60px;
+        }
+        .row-2{
+            margin-top: 5%;
+            display: flex;
+            flex-direction: row;
+            height: 400px;
+            
+        }
+        .number-list{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 100%;
+        }
+        .number-list button{
+            width: 60px;
+            height: 60px;
+            margin: 10px;
+            border-radius: 10px;
+            border: none;
+            font-family: Arial, Helvetica, sans-serif;
+            transform: scale(1.1);
+        }
+        .select-temprature{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-between;
+        }
+        .select-temprature button{
+            padding: 40px;
+            border: none;
+            border-radius: 10px;
+        }
+        input{
+            background-color: rgb(170, 169, 169);
+            font-size: 30px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <input type="text" id="screen" readonly>
+            <div class="row-2">
+                <div class="number-list">
+                    <button class="btn-number" data-value="1">1</button>
+                    <button class="btn-number" data-value="2">2</button>
+                    <button class="btn-number" data-value="3">3</button>
+                    <button class="btn-number" data-value="4">4</button>
+                    <button class="btn-number" data-value="5">5</button>
+                    <button class="btn-number" data-value="6">6</button>
+                    <button class="btn-number" data-value="7">7</button>
+                    <button class="btn-number" data-value="8">8</button>
+                    <button class="btn-number" data-value="9">9</button>
+                    <button class="btn-number" data-value="0">0</button>
+                    <button class="btn-delete-all">C</button>
+                    <button class="btn-dot">.</button>
+                </div>
+                <div class="select-temprature">
+                    <button>Fahrenheit</button>
+                    <button>Reamur</button>
+                    <button>Kelvin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const inputUser = document.getElementById('screen');
+        const btnNum = document.querySelectorAll('.btn-number');
+        const btnC = document.querySelector('.btn-delete-all');
+        const btnDot = document.querySelector('.btn-dot');
+        const btnFahrenheit = document.querySelector('.select-temprature button:nth-child(1)');
+        const btnReamur = document.querySelector('.select-temprature button:nth-child(2)');
+        const btnKelvin = document.querySelector('.select-temprature button:nth-child(3)');
+
+        btnNum.forEach(function(btn){
+            btn.addEventListener('click' , function(){
+                inputUser.value += btn.dataset.value
+            })
+        });
+
+        btnC.addEventListener('click', function(){
+            inputUser.value = "";
+        });
+        btnDot.addEventListener('click', function(){
+            inputUser.value += ".";
+        });
+        btnFahrenheit.addEventListener('click', function(){
+            let celcius = 0;
+            let fahrenheit = 0;
+            celcius = parseFloat(inputUser.value);
+            fahrenheit = (celcius * 9/5) + 32;
+            inputUser.value = fahrenheit;
+        });
+        btnReamur.addEventListener('click', function(){
+            let celcius = 0;
+            let reamur = 0;
+            celcius = parseFloat(inputUser.value);
+            reamur = celcius * 4/5;
+            inputUser.value = reamur;
+        });
+        btnKelvin.addEventListener('click', function(){
+            let celcius = 0;
+            let kelvin = 0;
+            celcius = parseFloat(inputUser.value);
+            kelvin = celcius + 273.15;
+            inputUser.value = kelvin;
+        });
+    </script>
+</body>
+</html>
