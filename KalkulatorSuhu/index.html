@@ -128,24 +128,18 @@
             inputUser.value += ".";
         });
         btnFahrenheit.addEventListener('click', function(){
-            let celcius = 0;
-            let fahrenheit = 0;
-            celcius = parseFloat(inputUser.value);
-            fahrenheit = (celcius * 9/5) + 32;
+            let celcius = parseFloat(inputUser.value);
+            let fahrenheit = (celcius * 9/5) + 32;
             inputUser.value = fahrenheit;
         });
         btnReamur.addEventListener('click', function(){
-            let celcius = 0;
-            let reamur = 0;
-            celcius = parseFloat(inputUser.value);
-            reamur = celcius * 4/5;
+            let celcius = parseFloat(inputUser.value);
+            let reamur = celcius * 4/5;
             inputUser.value = reamur;
         });
         btnKelvin.addEventListener('click', function(){
-            let celcius = 0;
-            let kelvin = 0;
-            celcius = parseFloat(inputUser.value);
-            kelvin = celcius + 273.15;
+            let celcius = parseFloat(inputUser.value);
+            let kelvin = celcius + 273.15;
             inputUser.value = kelvin;
         });
     </script>
